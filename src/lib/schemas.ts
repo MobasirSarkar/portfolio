@@ -42,6 +42,7 @@ export const profileSchema = z.object({
   phone: z.string().min(1),
   location: z.string().min(1),
   yearsOfExperience: z.string().min(1),
+  resume: z.string().startsWith("/").endsWith(".pdf"),
   education: z.object({
     degree: z.string().min(1),
     institution: z.string().min(1),

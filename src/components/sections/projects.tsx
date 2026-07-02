@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "motion/react";
 import { ExternalLink } from "lucide-react";
 import { FaGithub } from "react-icons/fa6";
@@ -27,6 +28,20 @@ function ProjectMedia({ project }: { project: ProjectsData[number] }) {
       />
     );
   }
+  if (project.poster) {
+    return (
+      <div className="relative h-full min-h-56 w-full halftone">
+        <Image
+          src={project.poster}
+          alt={`${project.name} screenshot`}
+          fill
+          loading="eager"
+          sizes="(min-width: 768px) 50vw, 100vw"
+          className="object-contain"
+        />
+      </div>
+    );
+  }
   return (
     <div className="relative flex h-full min-h-56 w-full items-center justify-center overflow-hidden halftone-lg">
       <div className="absolute inset-0 opacity-20">
@@ -41,9 +56,16 @@ function ProjectMedia({ project }: { project: ProjectsData[number] }) {
 
 export function Projects() {
   return (
-    <section id="projects" className="mx-auto max-w-6xl scroll-mt-24 px-4 py-24 sm:px-6">
+    <section
+      id="projects"
+      className="mx-auto max-w-6xl scroll-mt-24 px-4 py-24 sm:px-6"
+    >
       <Reveal from="wipe">
-        <ChapterHeading number="04" title="FEATURED BATTLES" subtitle="Projects worth telling stories about" />
+        <ChapterHeading
+          number="04"
+          title="FEATURED BATTLES"
+          subtitle="Projects worth telling stories about"
+        />
       </Reveal>
 
       <div className="mt-16 flex flex-col gap-20">
@@ -60,7 +82,9 @@ export function Projects() {
                   {project.sfx}
                 </SfxText>
 
-                <div className={`grid md:grid-cols-2 ${flip ? "md:[direction:rtl]" : ""}`}>
+                <div
+                  className={`grid md:grid-cols-2 ${flip ? "md:[direction:rtl]" : ""}`}
+                >
                   <div className="border-b-4 border-ink [direction:ltr] md:border-b-0 md:border-e-4">
                     <ProjectMedia project={project} />
                   </div>
@@ -75,7 +99,10 @@ export function Projects() {
 
                     <div className="mt-4 flex flex-col gap-3">
                       {project.description.map((paragraph, j) => (
-                        <p key={j} className="text-sm leading-relaxed sm:text-base">
+                        <p
+                          key={j}
+                          className="text-sm leading-relaxed sm:text-base"
+                        >
                           {paragraph}
                         </p>
                       ))}
@@ -94,15 +121,30 @@ export function Projects() {
 
                     <div className="mt-6 flex gap-3">
                       {project.links.github && (
-                        <Button asChild variant="outline" className="border-2 border-ink font-bold">
-                          <a href={project.links.github} target="_blank" rel="noreferrer">
+                        <Button
+                          asChild
+                          variant="outline"
+                          className="border-2 border-ink font-bold"
+                        >
+                          <a
+                            href={project.links.github}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
                             <FaGithub /> Code
                           </a>
                         </Button>
                       )}
                       {project.links.live && (
-                        <Button asChild className="border-2 border-ink bg-electric font-bold text-ink hover:bg-electric-deep hover:text-paper">
-                          <a href={project.links.live} target="_blank" rel="noreferrer">
+                        <Button
+                          asChild
+                          className="border-2 border-ink bg-electric font-bold text-ink hover:bg-electric-deep hover:text-paper"
+                        >
+                          <a
+                            href={project.links.live}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
                             <ExternalLink /> Live
                           </a>
                         </Button>

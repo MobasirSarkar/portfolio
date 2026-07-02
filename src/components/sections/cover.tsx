@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { motion } from "motion/react";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Download } from "lucide-react";
 
 import { SpeedLines } from "@/components/manga/speed-lines";
 import { SpeechBubble } from "@/components/manga/speech-bubble";
@@ -18,7 +18,11 @@ export function Cover() {
       const mm = gsap.matchMedia();
 
       mm.add("(prefers-reduced-motion: reduce)", () => {
-        gsap.from("[data-cover-item]", { opacity: 0, duration: 0.6, stagger: 0.1 });
+        gsap.from("[data-cover-item]", {
+          opacity: 0,
+          duration: 0.6,
+          stagger: 0.1,
+        });
       });
 
       mm.add("(prefers-reduced-motion: no-preference)", () => {
@@ -36,13 +40,26 @@ export function Cover() {
             },
             "-=0.4",
           )
-          .from(".cover-banner", { xPercent: -120, opacity: 0, duration: 0.5 }, "-=0.2")
+          .from(
+            ".cover-banner",
+            { xPercent: -120, opacity: 0, duration: 0.5 },
+            "-=0.2",
+          )
           .from(
             ".cover-bubble",
-            { scale: 0, opacity: 0, duration: 0.6, ease: "elastic.out(1, 0.5)" },
+            {
+              scale: 0,
+              opacity: 0,
+              duration: 0.6,
+              ease: "elastic.out(1, 0.5)",
+            },
             "-=0.1",
           )
-          .from(".cover-sfx", { opacity: 0, scale: 0, stagger: 0.08, ease: "back.out(3)" }, "<")
+          .from(
+            ".cover-sfx",
+            { opacity: 0, scale: 0, stagger: 0.08, ease: "back.out(3)" },
+            "<",
+          )
           .from(".cover-cue", { opacity: 0, y: -10 });
       });
     },
@@ -55,8 +72,14 @@ export function Cover() {
       className="relative flex min-h-svh flex-col items-center justify-center overflow-hidden border-b-4 border-ink px-4 pt-16"
     >
       {/* screentone corners */}
-      <div aria-hidden className="halftone-lg absolute top-0 left-0 h-48 w-48 [mask-image:linear-gradient(135deg,black,transparent_70%)]" />
-      <div aria-hidden className="halftone-lg absolute right-0 bottom-0 h-48 w-48 [mask-image:linear-gradient(-45deg,black,transparent_70%)]" />
+      <div
+        aria-hidden
+        className="halftone-lg absolute top-0 left-0 h-48 w-48 mask-[linear-gradient(135deg,black,transparent_70%)]"
+      />
+      <div
+        aria-hidden
+        className="halftone-lg absolute right-0 bottom-0 h-48 w-48 mask-[linear-gradient(-45deg,black,transparent_70%)]"
+      />
 
       <div className="cover-lines absolute inset-0 opacity-30">
         <SpeedLines />
@@ -70,7 +93,10 @@ export function Cover() {
       </SfxText>
 
       <div className="relative z-10 flex flex-col items-center text-center">
-        <div data-cover-item className="cover-banner mb-4 -skew-x-6 border-2 border-ink bg-electric px-4 py-1">
+        <div
+          data-cover-item
+          className="cover-banner mb-4 -skew-x-6 border-2 border-ink bg-electric px-4 py-1"
+        >
           <p className="skew-x-6 font-bold text-xs tracking-[0.35em] text-ink sm:text-sm">
             A DEVELOPER STORY — VOL. 1
           </p>
@@ -88,7 +114,10 @@ export function Cover() {
           ))}
         </h1>
 
-        <div data-cover-item className="cover-banner mt-2 border-4 border-ink bg-ink px-6 py-2 panel-shadow-electric">
+        <div
+          data-cover-item
+          className="cover-banner mt-2 border-4 border-ink bg-ink px-6 py-2 panel-shadow-electric"
+        >
           <p className="font-display text-xl tracking-[0.25em] text-paper sm:text-2xl">
             {profile.title.toUpperCase()}
           </p>
@@ -99,6 +128,18 @@ export function Cover() {
             <p className="font-bold text-base sm:text-lg">{profile.tagline}</p>
           </SpeechBubble>
         </div>
+
+        <motion.a
+          data-cover-item
+          href={profile.resume}
+          download
+          className="cover-bubble mt-8 flex items-center gap-2 border-4 border-ink bg-electric px-5 py-2.5 font-display text-sm tracking-[0.2em] text-ink panel-shadow"
+          whileHover={{ scale: 1.06, rotate: -2 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <Download className="size-4" strokeWidth={3} />
+          DOWNLOAD RESUME
+        </motion.a>
       </div>
 
       <motion.a
