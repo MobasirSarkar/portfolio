@@ -1,0 +1,49 @@
+[
+  {
+    "label": "Languages",
+    "skills": [
+      { "name": "Go", "icon": "SiGo", "color": "#00ADD8" },
+      { "name": "Python", "icon": "SiPython", "color": "#3776AB" },
+      { "name": "TypeScript", "icon": "SiTypescript", "color": "#3178C6" },
+      { "name": "JavaScript", "icon": "SiJavascript", "color": "#F7DF1E" },
+      { "name": "Bash", "icon": "SiGnubash", "color": "#4EAA25" }
+    ]
+  },
+  {
+    "label": "Frontend",
+    "skills": [
+      { "name": "React", "icon": "SiReact", "color": "#61DAFB" },
+      { "name": "Next.js", "icon": "SiNextdotjs", "color": "#0A0A0A" },
+      { "name": "Angular", "icon": "SiAngular", "color": "#DD0031" },
+      { "name": "HTML5", "icon": "SiHtml5", "color": "#E34F26" },
+      { "name": "CSS3", "icon": "SiCss", "color": "#663399" },
+      { "name": "SASS", "icon": "SiSass", "color": "#CC6699" },
+      { "name": "TailwindCSS", "icon": "SiTailwindcss", "color": "#06B6D4" }
+    ]
+  },
+  {
+    "label": "Backend",
+    "skills": [
+      { "name": "Gin", "icon": "SiGin", "color": "#008ECF" },
+      { "name": "Node.js", "icon": "SiNodedotjs", "color": "#5FA04E" },
+      { "name": "Flask", "icon": "SiFlask", "color": "#0A0A0A" },
+      { "name": "NestJS", "icon": "SiNestjs", "color": "#E0234E" },
+      { "name": "GraphQL", "icon": "SiGraphql", "color": "#E10098" },
+      { "name": "Socket.IO", "icon": "SiSocketdotio", "color": "#0A0A0A" },
+      { "name": "PostgreSQL", "icon": "SiPostgresql", "color": "#4169E1" },
+      { "name": "Redis", "icon": "SiRedis", "color": "#FF4438" }
+    ]
+  },
+  {
+    "label": "Infrastructure & DevOps",
+    "skills": [
+      { "name": "Docker", "icon": "SiDocker", "color": "#2496ED" },
+      { "name": "GitHub Actions", "icon": "SiGithubactions", "color": "#2088FF" },
+      { "name": "Jenkins", "icon": "SiJenkins", "color": "#D24939" },
+      { "name": "Nginx", "icon": "SiNginx", "color": "#009639" },
+      { "name": "Firebase", "icon": "SiFirebase", "color": "#DD2C00" },
+      { "name": "Linux", "icon": "SiLinux", "color": "#FCC624" },
+      { "name": "Git", "icon": "SiGit", "color": "#F05032" }
+    ]
+  }
+]

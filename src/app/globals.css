@@ -1,0 +1,223 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-comic);
+  --font-mono: var(--font-jetbrains);
+  --font-display: var(--font-bangers);
+  --font-heading: var(--font-bangers);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/* Manga palette — 60% paper / 30% ink / 10% electric cyan */
+@theme {
+  --color-paper: #fafaf8;
+  --color-ink: #0a0a0a;
+  --color-electric: #00b4d8;
+  --color-electric-deep: #0084a8;
+}
+
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+/* Remap shadcn tokens onto the manga palette (declared after the defaults so it wins) */
+:root {
+  --background: #fafaf8;
+  --foreground: #0a0a0a;
+  --card: #fafaf8;
+  --card-foreground: #0a0a0a;
+  --popover: #fafaf8;
+  --popover-foreground: #0a0a0a;
+  --primary: #0a0a0a;
+  --primary-foreground: #fafaf8;
+  --secondary: #f0f0ea;
+  --secondary-foreground: #0a0a0a;
+  --muted: #f0f0ea;
+  --muted-foreground: #4b4b48;
+  --accent: #d6f3fa;
+  --accent-foreground: #0a0a0a;
+  --border: #0a0a0a;
+  --input: #0a0a0a;
+  --ring: #00b4d8;
+  --radius: 0rem;
+}
+
+/* sugar-high syntax highlighting palette (code blocks render on ink background) */
+:root {
+  --sh-class: #4cc9f0;
+  --sh-identifier: #f0f0ea;
+  --sh-sign: #8a8a86;
+  --sh-property: #62d4f1;
+  --sh-entity: #24c1e0;
+  --sh-jsxliterals: #9adbe8;
+  --sh-string: #7fd8be;
+  --sh-keyword: #00b4d8;
+  --sh-comment: #6b6b68;
+}
+
+/* Screentone dot patterns — pure CSS, no image assets */
+@utility halftone {
+  background-image: radial-gradient(circle, rgb(10 10 10 / 0.35) 1px, transparent 1px);
+  background-size: 8px 8px;
+}
+@utility halftone-lg {
+  background-image: radial-gradient(circle, rgb(10 10 10 / 0.25) 2px, transparent 2px);
+  background-size: 14px 14px;
+}
+@utility halftone-electric {
+  background-image: radial-gradient(circle, rgb(0 180 216 / 0.45) 1.5px, transparent 1.5px);
+  background-size: 10px 10px;
+}
+
+/* Horizontal motion streaks */
+@utility speedlines {
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent 0 5px,
+    rgb(10 10 10 / 0.08) 5px 6px
+  );
+}
+
+/* Hard offset "printed page" shadows */
+@utility panel-shadow {
+  box-shadow: 6px 6px 0 0 var(--color-ink);
+}
+@utility panel-shadow-sm {
+  box-shadow: 3px 3px 0 0 var(--color-ink);
+}
+@utility panel-shadow-electric {
+  box-shadow: 6px 6px 0 0 var(--color-electric);
+}
+
+/* Comic lettering outlines for SFX typography */
+@utility text-stroke-ink {
+  -webkit-text-stroke: 2px var(--color-ink);
+}
+@utility text-stroke-paper {
+  -webkit-text-stroke: 2px var(--color-paper);
+}
+@utility text-stroke-thin {
+  -webkit-text-stroke: 1px var(--color-ink);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans scroll-smooth;
+  }
+  ::selection {
+    background: var(--color-electric);
+    color: var(--color-paper);
+  }
+}

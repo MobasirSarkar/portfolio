@@ -1,0 +1,29 @@
+[
+  {
+    "company": "Roadcast Tech Solutions Pvt. Ltd.",
+    "role": "Full Stack Developer",
+    "period": "January 2026 — Present",
+    "location": "Delhi, India (On-site)",
+    "stack": ["Golang", "Python", "GraphQL", "Angular", "PostgreSQL", "Redis", "Docker"],
+    "highlights": [
+      "Reduced release turnaround time by 50% by designing standardized CI/CD pipelines using GitHub Actions for multi-environment deployments.",
+      "Led development of an HRMS platform serving 1,000+ users, delivering employee management, workforce scheduling, attendance tracking, and workflow automation.",
+      "Architected a Fleet Management Platform enabling device and vehicle model-based tracking, route planning, trip orchestration, and real-time operations.",
+      "Architected centralized authentication and authorization services across multiple enterprise applications with secure session management, RBAC, and organization-level access control."
+    ],
+    "sfx": "LEVEL UP!"
+  },
+  {
+    "company": "Bioqube Matrics Pvt. Ltd.",
+    "role": "Associate Software Engineer",
+    "period": "May 2023 — January 2026",
+    "location": "Noida, India",
+    "stack": ["NestJS", "Python", "Flask", "Next.js", "PostgreSQL", "PM2", "Docker"],
+    "highlights": [
+      "Achieved 92% validation accuracy by designing and deploying custom computer vision models for real-time user activity detection using IP camera streams.",
+      "Built a multi-tenant identity management platform with RBAC, secure user onboarding, and access management workflows across multiple organizations.",
+      "Engineered low-latency backend services with NestJS, PostgreSQL, and Redis, optimizing data access patterns for concurrent enterprise workloads."
+    ],
+    "sfx": "ORIGIN!"
+  }
+]

@@ -1,0 +1,36 @@
+---
+title: "Chapter Zero: Why This Site Looks Like a Manga"
+description: "The thinking behind building a portfolio that reads like a manga volume — panels, screentones, and GSAP-powered page turns."
+date: "2026-07-02"
+tags: ["meta", "design", "nextjs"]
+---
+
+Every portfolio says "I build clean, scalable web apps." Almost none of them *show* it in a way you remember five minutes later.
+
+So this site is a manga volume. Panels instead of cards. Screentones instead of gradients. Chapters instead of sections.
+
+## The rules I set
+
+1. **Content is data.** Everything you read on the home page — name, skills, story arcs — lives in JSON files validated by Zod at build time. Break the schema, break the build.
+2. **No `any`.** Every type is inferred from a Zod schema with `z.infer`.
+3. **Animate cheap properties only.** GSAP and Motion only touch `transform`, `opacity`, and `clip-path`, so the page turns stay at 60fps.
+
+## A taste of the content pipeline
+
+```ts
+export const projectsSchema = z.array(
+  z.object({
+    id: z.string().regex(/^[a-z0-9-]+$/),
+    name: z.string().min(1),
+    tech: z.array(z.string().min(1)).min(1),
+    video: z.string().startsWith("/videos/").nullable(),
+  }),
+);
+
+// Parsed at build time — invalid content fails the static export.
+export const projects = projectsSchema.parse(projectsJson);
+```
+
+That's the whole trick: the site is a renderer, the JSON is the manuscript.
+
+To be continued…

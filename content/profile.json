@@ -1,0 +1,20 @@
+{
+  "name": "Abdul Mobasir Sarkar",
+  "heroName": "MOBASIR",
+  "title": "Software Engineer",
+  "tagline": "Building scalable systems, one panel at a time.",
+  "summary": [
+    "Software Engineer with 3+ years of experience developing scalable web applications, backend services, and enterprise platforms using Golang, Python, TypeScript, React, Next.js, PostgreSQL, and Redis.",
+    "Experienced in building REST/GraphQL APIs, real-time applications, authentication systems, and distributed services, with hands-on experience in Docker, GitHub Actions, Nginx, and Linux.",
+    "Focused on building scalable, maintainable, and production-ready applications."
+  ],
+  "email": "sarkar.mobasir@gmail.com",
+  "phone": "+91-9318429762",
+  "location": "Delhi, India",
+  "yearsOfExperience": "3+",
+  "education": {
+    "degree": "Bachelor of Computer Applications",
+    "institution": "Maharshi Dayanand University",
+    "location": "Rohtak, India"
+  }
+}

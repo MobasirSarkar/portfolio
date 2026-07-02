@@ -1,0 +1,34 @@
+[
+  {
+    "id": "nexusflow",
+    "name": "NexusFlow",
+    "tagline": "Inventory & Order Management System",
+    "description": [
+      "Architected a production-grade inventory and order management platform implementing transactional order processing, stock validation, and ACID-compliant business workflows.",
+      "Designed scalable system architecture using cache-aside patterns, automatic cache invalidation, repository-service design, and Docker-based deployments."
+    ],
+    "tech": ["Flask", "Next.js", "PostgreSQL", "Valkey", "Docker"],
+    "video": null,
+    "poster": "/images/projects/nexusflow.png",
+    "links": {
+      "github": "https://github.com/MobasirSarkar"
+    },
+    "sfx": "WHAM!"
+  },
+  {
+    "id": "beyondevent",
+    "name": "BeyondEvent",
+    "tagline": "Event Simulation Platform",
+    "description": [
+      "Designed an event-driven architecture simulation platform that lets developers model distributed systems, create service topologies, and visualize asynchronous event flows through an interactive graph-based editor.",
+      "Implemented topology management, event persistence, and real-time event streaming with Socket.IO, distributed tracing, and replay capabilities on a modular event bus architecture."
+    ],
+    "tech": ["React", "Node.js", "PostgreSQL", "Redis", "Socket.IO", "Docker"],
+    "video": null,
+    "poster": null,
+    "links": {
+      "github": "https://github.com/MobasirSarkar"
+    },
+    "sfx": "ドン!"
+  }
+]

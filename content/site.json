@@ -1,0 +1,30 @@
+{
+  "title": "Mobasir Sarkar — Full Stack Engineer",
+  "description": "Full Stack Engineer with 3+ years of experience building scalable web applications, backend services, and enterprise platforms with Go, Python, TypeScript, React, and Next.js.",
+  "url": "https://mobasir-portfolio.web.app",
+  "nav": [
+    { "label": "About", "href": "/#about" },
+    { "label": "Skills", "href": "/#skills" },
+    { "label": "Experience", "href": "/#experience" },
+    { "label": "Projects", "href": "/#projects" },
+    { "label": "Blog", "href": "/blog" },
+    { "label": "Contact", "href": "/#contact" }
+  ],
+  "socials": [
+    {
+      "label": "GitHub",
+      "href": "https://github.com/MobasirSarkar",
+      "icon": "github"
+    },
+    {
+      "label": "LinkedIn",
+      "href": "https://linkedin.com/in/mobasir-sarkar-744643299",
+      "icon": "linkedin"
+    },
+    {
+      "label": "Email",
+      "href": "mailto:sarkar.mobasir@gmail.com",
+      "icon": "email"
+    }
+  ]
+}

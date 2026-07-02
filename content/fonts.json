@@ -1,0 +1,20 @@
+{
+  "display": {
+    "family": "Bangers",
+    "cssVariable": "--font-bangers",
+    "weights": ["400"],
+    "role": "SFX text, chapter headings, hero title"
+  },
+  "body": {
+    "family": "Comic Neue",
+    "cssVariable": "--font-comic",
+    "weights": ["400", "700"],
+    "role": "body copy, speech bubbles, UI text"
+  },
+  "mono": {
+    "family": "JetBrains Mono",
+    "cssVariable": "--font-jetbrains",
+    "weights": ["400"],
+    "role": "code blocks, tech tags"
+  }
+}
