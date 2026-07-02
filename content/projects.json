@@ -11,7 +11,7 @@
     "video": null,
     "poster": "/images/projects/nexusflow.png",
     "links": {
-      "github": "https://github.com/MobasirSarkar"
+      "github": "https://github.com/MobasirSarkar/Inventory-Management"
     },
     "sfx": "WHAM!"
   },
@@ -25,9 +25,9 @@
     ],
     "tech": ["React", "Node.js", "PostgreSQL", "Redis", "Socket.IO", "Docker"],
     "video": null,
-    "poster": null,
+    "poster": "/images/projects/beyondevent.png",
     "links": {
-      "github": "https://github.com/MobasirSarkar"
+      "github": "https://github.com/BeyondEvent/platform"
     },
     "sfx": "ドン!"
   }

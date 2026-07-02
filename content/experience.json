@@ -4,7 +4,15 @@
     "role": "Full Stack Developer",
     "period": "January 2026 — Present",
     "location": "Delhi, India (On-site)",
-    "stack": ["Golang", "Python", "GraphQL", "Angular", "PostgreSQL", "Redis", "Docker"],
+    "stack": [
+      "Golang",
+      "Python",
+      "GraphQL",
+      "Angular",
+      "PostgreSQL",
+      "Redis",
+      "Docker"
+    ],
     "highlights": [
       "Reduced release turnaround time by 50% by designing standardized CI/CD pipelines using GitHub Actions for multi-environment deployments.",
       "Led development of an HRMS platform serving 1,000+ users, delivering employee management, workforce scheduling, attendance tracking, and workflow automation.",
@@ -18,7 +26,16 @@
     "role": "Associate Software Engineer",
     "period": "May 2023 — January 2026",
     "location": "Noida, India",
-    "stack": ["NestJS", "Python", "Flask", "Next.js", "PostgreSQL", "PM2", "Docker"],
+    "stack": [
+      "NestJS",
+      "Python",
+      "Flask",
+      "Next.js",
+      "PostgreSQL",
+      "PM2",
+      "Docker",
+      "Node.js"
+    ],
     "highlights": [
       "Achieved 92% validation accuracy by designing and deploying custom computer vision models for real-time user activity detection using IP camera streams.",
       "Built a multi-tenant identity management platform with RBAC, secure user onboarding, and access management workflows across multiple organizations.",

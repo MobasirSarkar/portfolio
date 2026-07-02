@@ -1,3 +1,4 @@
+import { MangaBook } from "@/components/manga-book";
 import { Nav } from "@/components/nav";
 import { Cover } from "@/components/sections/cover";
 import { About } from "@/components/sections/about";
@@ -10,14 +11,14 @@ export default function Home() {
   return (
     <>
       <Nav />
-      <main>
+      <MangaBook>
         <Cover />
         <About />
         <Skills />
         <Experience />
         <Projects />
         <Contact />
-      </main>
+      </MangaBook>
     </>
   );
 }

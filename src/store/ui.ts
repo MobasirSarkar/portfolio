@@ -7,6 +7,9 @@ type UiState = {
   turnTo: string | null;
   startTurn: (href: string) => void;
   endTurn: () => void;
+  /** Section id currently in view ("about", "skills", …), null on the cover. */
+  activeSection: string | null;
+  setActiveSection: (id: string) => void;
 };
 
 export const useUiStore = create<UiState>((set) => ({
@@ -15,4 +18,6 @@ export const useUiStore = create<UiState>((set) => ({
   turnTo: null,
   startTurn: (href) => set({ turnTo: href, navOpen: false }),
   endTurn: () => set({ turnTo: null }),
+  activeSection: null,
+  setActiveSection: (id) => set({ activeSection: id }),
 }));

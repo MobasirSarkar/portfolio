@@ -20,7 +20,7 @@ const socialIcons: Record<string, IconType> = {
 
 export function Contact() {
   return (
-    <section id="contact" className="scroll-mt-24 border-t-4 border-ink bg-ink pt-24 text-paper">
+    <section id="contact" className="scroll-mt-24 border-t-4 border-ink bg-ink pt-24 text-paper md:pt-8">
       <div className="mx-auto flex max-w-4xl flex-col items-center px-4 text-center sm:px-6">
         <Reveal from="wipe">
           <ChapterHeading number="05" title="NEXT CHAPTER?" />
@@ -71,7 +71,7 @@ export function Contact() {
         <SfxText className="mt-12 text-2xl text-paper/20">つづく…</SfxText>
       </div>
 
-      <footer className="mt-16 border-t border-paper/20 py-6">
+      <footer className="mt-16 border-t border-paper/20 py-6 md:mt-8">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 px-4 text-xs text-paper/60 sm:flex-row sm:px-6">
           <p>
             © {new Date().getFullYear()} {profile.name}. To be continued…

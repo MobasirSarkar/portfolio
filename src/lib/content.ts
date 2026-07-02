@@ -18,3 +18,12 @@ export const profile = profileSchema.parse(profileJson);
 export const skills = skillsSchema.parse(skillsJson);
 export const experience = experienceSchema.parse(experienceJson);
 export const projects = projectsSchema.parse(projectsJson);
+
+// cross-file check: every cover heroTech name must exist in skills.json
+const skillNames = new Set(skills.flatMap((c) => c.skills.map((s) => s.name)));
+const unknownHeroTech = profile.heroTech.filter((name) => !skillNames.has(name));
+if (unknownHeroTech.length > 0) {
+  throw new Error(
+    `profile.json heroTech names missing from skills.json: ${unknownHeroTech.join(", ")}`,
+  );
+}

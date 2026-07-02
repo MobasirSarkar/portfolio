@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "motion/react";
 import { Menu, X } from "lucide-react";
@@ -30,15 +31,40 @@ export function Nav() {
   const navOpen = useUiStore((s) => s.navOpen);
   const setNavOpen = useUiStore((s) => s.setNavOpen);
   const startTurn = useUiStore((s) => s.startTurn);
+  const activeSection = useUiStore((s) => s.activeSection);
+  const setActiveSection = useUiStore((s) => s.setActiveSection);
+
+  // track which section covers the viewport center — works for both the
+  // horizontal book (IO follows transforms) and the vertical mobile stack
+  useEffect(() => {
+    const sections = site.nav
+      .filter((item) => item.href.startsWith("/#"))
+      .map((item) => document.getElementById(item.href.slice(2)))
+      .filter((el): el is HTMLElement => el !== null);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) setActiveSection(entry.target.id);
+        }
+      },
+      { rootMargin: "-45% -45% -45% -45%", threshold: 0 },
+    );
+    sections.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, [setActiveSection]);
 
   return (
     <>
       {/* floating logo */}
       <Link
         href="/"
-        className="group fixed top-4 left-4 z-[70] border-2 border-ink bg-paper px-3 py-1 panel-shadow-sm"
+        className="group fixed top-4 left-4 z-70 border-2 border-ink bg-paper px-3 py-1 panel-shadow-sm"
       >
-        <SfxText decorative={false} className="text-xl transition-colors group-hover:text-electric">
+        <SfxText
+          decorative={false}
+          className="text-xl transition-colors group-hover:text-electric"
+        >
           {profile.heroName}
           <span className="text-electric">!!</span>
         </SfxText>
@@ -50,7 +76,7 @@ export function Nav() {
         aria-label={navOpen ? "Close menu" : "Open menu"}
         aria-expanded={navOpen}
         onClick={() => setNavOpen(!navOpen)}
-        className="fixed top-4 right-4 z-[70] flex size-12 items-center justify-center border-2 border-ink bg-ink text-paper panel-shadow-electric"
+        className="fixed top-4 right-4 z-70 flex size-12 items-center justify-center border-2 border-ink bg-ink text-paper panel-shadow-electric"
         whileHover={{ scale: 1.08, rotate: navOpen ? 0 : -3 }}
         whileTap={{ scale: 0.92 }}
       >
@@ -62,7 +88,7 @@ export function Nav() {
           <>
             {/* backdrop */}
             <motion.div
-              className="fixed inset-0 z-[55] bg-ink/60"
+              className="fixed inset-0 z-55 bg-ink/60"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -72,7 +98,7 @@ export function Nav() {
             {/* electric slice behind the panel */}
             <motion.div
               aria-hidden
-              className="fixed inset-y-0 right-0 z-[56] w-full max-w-sm -skew-x-3 bg-electric sm:max-w-md"
+              className="fixed inset-y-0 right-0 z-56 w-full max-w-sm -skew-x-3 bg-electric sm:max-w-md"
               initial={{ x: "120%" }}
               animate={{ x: "2.5%" }}
               exit={{ x: "120%" }}
@@ -81,13 +107,16 @@ export function Nav() {
 
             {/* panel */}
             <motion.aside
-              className="fixed inset-y-0 right-0 z-[60] flex w-full max-w-sm flex-col border-l-4 border-ink bg-paper sm:max-w-md"
+              className="fixed inset-y-0 right-0 z-60 flex w-full max-w-sm flex-col border-l-4 border-ink bg-paper sm:max-w-md"
               initial={{ x: "110%" }}
               animate={{ x: 0 }}
               exit={{ x: "110%" }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
             >
-              <div aria-hidden className="halftone absolute top-0 right-0 h-28 w-28 [mask-image:linear-gradient(225deg,black,transparent_75%)]" />
+              <div
+                aria-hidden
+                className="halftone absolute top-0 right-0 h-28 w-28 mask-[linear-gradient(225deg,black,transparent_75%)]"
+              />
               <SfxText className="absolute top-24 left-4 origin-left text-lg text-electric [writing-mode:vertical-rl]">
                 メニュー — MENU!
               </SfxText>
@@ -99,23 +128,35 @@ export function Nav() {
                 animate="open"
                 exit="closed"
               >
-                {site.nav.map((item, i) => (
-                  <motion.div key={item.href} variants={itemVariants}>
-                    <button
-                      type="button"
-                      onClick={() => startTurn(item.href)}
-                      className="group flex w-full items-baseline gap-3 border-b-2 border-ink/10 py-3 text-left font-display text-3xl tracking-wide transition-colors hover:text-electric sm:text-4xl"
-                    >
-                      <span className="font-display text-sm text-electric">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      {item.label.toUpperCase()}
-                      <span className="ml-auto -translate-x-2 opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100">
-                        »
-                      </span>
-                    </button>
-                  </motion.div>
-                ))}
+                {site.nav.map((item, i) => {
+                  const active = item.href === `/#${activeSection}`;
+                  return (
+                    <motion.div key={item.href} variants={itemVariants}>
+                      <button
+                        type="button"
+                        onClick={() => startTurn(item.href)}
+                        aria-current={active ? "true" : undefined}
+                        className={`group flex w-full items-baseline gap-3 border-b-2 border-ink/10 py-3 text-left font-display text-3xl tracking-wide transition-colors hover:text-electric sm:text-4xl ${active ? "text-electric" : ""}`}
+                      >
+                        <span
+                          className={`font-display text-sm ${active ? "bg-electric px-1 text-ink" : "text-electric"}`}
+                        >
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        {item.label.toUpperCase()}
+                        {active ? (
+                          <span className="ml-auto font-mono text-[10px] tracking-widest text-ink">
+                            ● NOW READING
+                          </span>
+                        ) : (
+                          <span className="ml-auto -translate-x-2 opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100">
+                            »
+                          </span>
+                        )}
+                      </button>
+                    </motion.div>
+                  );
+                })}
               </motion.nav>
 
               <motion.div

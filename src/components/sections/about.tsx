@@ -10,12 +10,13 @@ import { profile } from "@/lib/content";
 
 export function About() {
   return (
-    <section id="about" className="mx-auto max-w-6xl scroll-mt-24 px-4 py-24 sm:px-6">
+    <section id="about" className="scroll-mt-24 px-4 py-24 sm:px-6 md:py-8">
+      <div className="mx-auto w-full max-w-6xl">
       <Reveal from="wipe">
         <ChapterHeading number="01" title="ORIGIN STORY" subtitle="Who is this developer?" />
       </Reveal>
 
-      <div className="mt-14 grid gap-10 md:grid-cols-[1.4fr_1fr]">
+      <div className="mt-14 grid gap-10 md:mt-10 md:grid-cols-[1.4fr_1fr]">
         <div className="flex flex-col gap-10">
           {profile.summary.map((paragraph, i) => (
             <Reveal key={i} from={i % 2 === 0 ? "left" : "right"} className={i % 2 === 1 ? "md:ml-12" : "md:mr-12"}>
@@ -66,6 +67,7 @@ export function About() {
             </Panel>
           </Reveal>
         </div>
+      </div>
       </div>
     </section>
   );

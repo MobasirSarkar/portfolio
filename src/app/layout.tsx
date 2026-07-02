@@ -24,8 +24,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${fontVariables} h-full antialiased`}>
-      <body className="flex min-h-full flex-col overflow-x-hidden bg-paper text-ink">
+    // overflow-x-clip on html: pre-animation Reveal offsets (x: ±70) widen the
+    // document, and mobile browsers expand the layout viewport past body's
+    // overflow-x-hidden — clipping must live on the root element
+    <html lang="en" className={`${fontVariables} h-full overflow-x-clip antialiased`}>
+      {/* keep body block-level: ScrollTrigger pin spacing is disabled inside flex parents */}
+      <body className="min-h-full overflow-x-hidden bg-paper text-ink">
         {children}
         <PageTurn />
       </body>

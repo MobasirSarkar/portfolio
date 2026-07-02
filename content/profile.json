@@ -13,6 +13,15 @@
   "location": "Gurugram, India",
   "yearsOfExperience": "3+",
   "resume": "/MobasirSarkar_Resume.pdf",
+  "heroTech": [
+    "Go",
+    "Node.js",
+    "Flask",
+    "React",
+    "Next.js",
+    "PostgreSQL",
+    "Docker"
+  ],
   "education": {
     "degree": "Bachelor of Computer Applications",
     "institution": "Maharshi Dayanand University",

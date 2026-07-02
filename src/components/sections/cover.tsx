@@ -2,16 +2,35 @@
 
 import { useRef } from "react";
 import { motion } from "motion/react";
-import { ChevronDown, Download } from "lucide-react";
+import { ChevronDown, Download, MapPin, Zap } from "lucide-react";
+import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
+import type { IconType } from "react-icons";
 
 import { SpeedLines } from "@/components/manga/speed-lines";
 import { SpeechBubble } from "@/components/manga/speech-bubble";
 import { SfxText } from "@/components/manga/sfx-text";
 import { gsap, useGSAP } from "@/lib/gsap";
-import { profile } from "@/lib/content";
+import { profile, site, skills } from "@/lib/content";
+import { skillIconMap } from "@/lib/icon-map";
+import { useUiStore } from "@/store/ui";
+
+const socialIcons: Record<string, IconType> = {
+  github: FaGithub,
+  linkedin: FaLinkedinIn,
+};
+
+const coverSocials = site.socials.filter((s) => s.icon !== "email");
+
+// quick-glance loadout for the cover — names come from profile.json heroTech,
+// icon/color resolved from skills.json (content.ts fails the build on unknown names)
+const allSkills = skills.flatMap((category) => category.skills);
+const heroTech = profile.heroTech
+  .map((name) => allSkills.find((skill) => skill.name === name))
+  .filter((skill): skill is (typeof allSkills)[number] => skill !== undefined);
 
 export function Cover() {
   const ref = useRef<HTMLElement>(null);
+  const startTurn = useUiStore((s) => s.startTurn);
 
   useGSAP(
     () => {
@@ -123,27 +142,99 @@ export function Cover() {
           </p>
         </div>
 
-        <div data-cover-item className="cover-bubble mt-10 max-w-md">
+        <div data-cover-item className="cover-bubble mt-8 max-w-md">
           <SpeechBubble tail="left">
             <p className="font-bold text-base sm:text-lg">{profile.tagline}</p>
           </SpeechBubble>
         </div>
 
-        <motion.a
+        {/* main weapons — quick-glance tech */}
+        <div data-cover-item className="cover-bubble mt-7 flex items-center gap-2">
+          <span className="hidden font-display text-xs tracking-[0.25em] text-ink/60 sm:block">
+            MAIN WEAPONS
+          </span>
+          <div className="flex flex-wrap justify-center gap-1.5">
+            {heroTech.map((skill) => {
+              const Icon = skillIconMap[skill.icon];
+              if (!Icon) return null;
+              return (
+                <motion.span
+                  key={skill.name}
+                  title={skill.name}
+                  className="flex size-9 items-center justify-center border-2 border-ink bg-paper panel-shadow-sm"
+                  whileHover={{ scale: 1.2, rotate: -6, y: -3 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 15 }}
+                >
+                  <Icon role="img" aria-label={skill.name} className="size-5" style={{ color: skill.color }} />
+                </motion.span>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* CTAs */}
+        <div data-cover-item className="cover-bubble mt-7 flex items-center gap-3">
+          <motion.a
+            href={profile.resume}
+            download
+            className="flex items-center gap-2 border-4 border-ink bg-electric px-5 py-2.5 font-display text-sm tracking-[0.2em] text-ink panel-shadow"
+            whileHover={{ scale: 1.06, rotate: -2 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Download className="size-4" strokeWidth={3} />
+            DOWNLOAD RESUME
+          </motion.a>
+          {coverSocials.map((social) => {
+            const Icon = socialIcons[social.icon];
+            if (!Icon) return null;
+            return (
+              <motion.a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={social.label}
+                className="flex size-11 items-center justify-center border-4 border-ink bg-paper text-ink panel-shadow-sm"
+                whileHover={{ scale: 1.12, rotate: 5, backgroundColor: "#00b4d8" }}
+                whileTap={{ scale: 0.92 }}
+              >
+                <Icon className="size-5" />
+              </motion.a>
+            );
+          })}
+        </div>
+
+        {/* status strip */}
+        <div
           data-cover-item
-          href={profile.resume}
-          download
-          className="cover-bubble mt-8 flex items-center gap-2 border-4 border-ink bg-electric px-5 py-2.5 font-display text-sm tracking-[0.2em] text-ink panel-shadow"
-          whileHover={{ scale: 1.06, rotate: -2 }}
-          whileTap={{ scale: 0.95 }}
+          className="cover-banner mt-7 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 font-mono text-[11px] font-bold tracking-wider sm:text-xs"
         >
-          <Download className="size-4" strokeWidth={3} />
-          DOWNLOAD RESUME
-        </motion.a>
+          <span className="flex items-center gap-1.5">
+            <Zap className="size-3.5 text-electric" />
+            {profile.yearsOfExperience} YEARS EXP
+          </span>
+          <span aria-hidden className="rotate-45 border border-ink bg-electric p-0.75" />
+          <span className="flex items-center gap-1.5">
+            <MapPin className="size-3.5 text-electric" />
+            {profile.location.toUpperCase()}
+          </span>
+          <span aria-hidden className="rotate-45 border border-ink bg-electric p-0.75" />
+          <span className="flex items-center gap-1.5">
+            <span className="relative flex size-2.5">
+              <span className="absolute inline-flex h-full w-full animate-ping bg-electric opacity-75" />
+              <span className="relative inline-flex size-2.5 border border-ink bg-electric" />
+            </span>
+            OPEN TO NEW ARCS
+          </span>
+        </div>
       </div>
 
       <motion.a
         href="#about"
+        onClick={(e) => {
+          e.preventDefault();
+          startTurn("/#about");
+        }}
         data-cover-item
         className="cover-cue absolute bottom-6 flex flex-col items-center gap-1 font-display text-sm tracking-[0.3em]"
         animate={{ y: [0, 8, 0] }}

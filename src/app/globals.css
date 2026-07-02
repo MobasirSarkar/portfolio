@@ -206,6 +206,59 @@
   -webkit-text-stroke: 1px var(--color-ink);
 }
 
+/* Manga scrollbar — ink rail, paper gutter, electric on grab */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-paper);
+  border-left: 2px solid var(--color-ink);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-ink);
+  border: 2px solid var(--color-paper);
+}
+::-webkit-scrollbar-thumb:hover,
+::-webkit-scrollbar-thumb:active {
+  background: var(--color-electric);
+}
+/* Firefox (no ::-webkit-scrollbar support) */
+@supports not selector(::-webkit-scrollbar) {
+  html {
+    scrollbar-color: var(--color-ink) var(--color-paper);
+  }
+}
+
+/* thin ink scrollbar for scrollable areas inside panels */
+.panel-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-ink) transparent;
+}
+
+/* Horizontal manga-book mode — MangaBook applies .book-track on md+ screens
+   without reduced motion; every direct child becomes one full-viewport page. */
+.book-track {
+  display: flex;
+  width: max-content;
+  height: 100svh;
+  will-change: transform;
+}
+.book-track > * {
+  display: flex;
+  flex-direction: column;
+  justify-content: safe center;
+  width: 100vw;
+  height: 100svh;
+  flex: none;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+/* page gutter = book spine */
+.book-track > * + * {
+  border-left: 4px solid var(--color-ink);
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -213,8 +266,10 @@
   body {
     @apply bg-background text-foreground;
   }
+  /* no scroll-behavior:smooth — the browser re-animating programmatic scrolls
+     fights ScrollTrigger's scrub/snap and causes jitter */
   html {
-    @apply font-sans scroll-smooth;
+    @apply font-sans;
   }
   ::selection {
     background: var(--color-electric);

@@ -43,6 +43,8 @@ export const profileSchema = z.object({
   location: z.string().min(1),
   yearsOfExperience: z.string().min(1),
   resume: z.string().startsWith("/").endsWith(".pdf"),
+  /** Skill names (must exist in skills.json) shown as the cover's quick-glance loadout. */
+  heroTech: z.array(z.string().min(1)).min(1),
   education: z.object({
     degree: z.string().min(1),
     institution: z.string().min(1),

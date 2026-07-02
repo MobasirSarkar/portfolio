@@ -15,6 +15,7 @@ const nextConfig: NextConfig = {
   images: { unoptimized: true },
   basePath: basePath || undefined,
   turbopack: { root: __dirname },
+  allowedDevOrigins: ["192.168.1.104"],
 };
 
 export default nextConfig;
