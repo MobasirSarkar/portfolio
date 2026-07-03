@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "motion/react";
-import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
+import { ChevronLeft, ChevronRight, ExternalLink, Maximize2 } from "lucide-react";
 import { FaGithub } from "react-icons/fa6";
 
 import { ChapterHeading } from "@/components/manga/chapter-heading";
@@ -12,22 +12,55 @@ import { SpeedLines } from "@/components/manga/speed-lines";
 import { Reveal } from "@/components/reveal";
 import { StackChip } from "@/components/stack-chip";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { projects } from "@/lib/content";
 import type { Projects as ProjectsData } from "@/lib/schemas";
 
 function ProjectMedia({ project }: { project: ProjectsData[number] }) {
+  const [isOpen, setIsOpen] = useState(false);
+
   if (project.video) {
     return (
-      <video
-        className="h-full w-full object-cover"
-        src={project.video}
-        poster={project.poster ?? undefined}
-        muted
-        loop
-        playsInline
-        autoPlay
-        aria-label={`${project.name} demo video`}
-      />
+      <div className="relative h-full w-full overflow-hidden group">
+        <video
+          className="h-full w-full object-cover"
+          src={project.video}
+          poster={project.poster ?? undefined}
+          muted
+          loop
+          playsInline
+          autoPlay
+          aria-label={`${project.name} demo video`}
+        />
+        <button
+          type="button"
+          onClick={() => setIsOpen(true)}
+          aria-label={`Expand ${project.name} demo video`}
+          title="Expand video"
+          className="absolute top-3 right-3 z-20 flex items-center justify-center border-2 border-ink bg-paper p-2 text-ink shadow-md transition-all hover:bg-electric hover:scale-110 active:scale-95 focus-visible:outline-none"
+        >
+          <Maximize2 className="size-4 stroke-[2.5]" />
+        </button>
+
+        <Dialog open={isOpen} onOpenChange={setIsOpen}>
+          <DialogContent className="w-full max-w-5xl sm:max-w-5xl border-4 border-ink bg-paper p-4 sm:p-6 panel-shadow rounded-none">
+            <DialogTitle className="font-display text-xl sm:text-2xl tracking-wide uppercase text-ink">
+              {project.name} — FULL DEMO
+            </DialogTitle>
+            <div className="relative aspect-video w-full overflow-hidden border-2 border-ink bg-black mt-2">
+              <video
+                className="h-full w-full object-contain"
+                src={project.video}
+                poster={project.poster ?? undefined}
+                controls
+                autoPlay
+                playsInline
+                aria-label={`${project.name} full demo video`}
+              />
+            </div>
+          </DialogContent>
+        </Dialog>
+      </div>
     );
   }
   if (project.poster) {
@@ -135,21 +168,21 @@ export function Projects() {
                       ))}
                     </div>
 
-                    <div className="mt-6 flex gap-3">
-                      {project.links.github && (
+                    <div className="mt-6 flex flex-wrap gap-3">
+                      {project.links.github && project.links.github.trim() !== "" && (
                         <Button asChild variant="outline" className="border-2 border-ink font-bold">
                           <a href={project.links.github} target="_blank" rel="noreferrer">
                             <FaGithub /> Code
                           </a>
                         </Button>
                       )}
-                      {project.links.live && (
+                      {project.links.live && project.links.live.trim() !== "" && (
                         <Button
                           asChild
                           className="border-2 border-ink bg-electric font-bold text-ink hover:bg-electric-deep hover:text-paper"
                         >
                           <a href={project.links.live} target="_blank" rel="noreferrer">
-                            <ExternalLink /> Live
+                            <ExternalLink /> Live Demo
                           </a>
                         </Button>
                       )}

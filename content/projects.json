@@ -8,10 +8,11 @@
       "Designed scalable system architecture using cache-aside patterns, automatic cache invalidation, repository-service design, and Docker-based deployments."
     ],
     "tech": ["Flask", "Next.js", "PostgreSQL", "Valkey", "Docker"],
-    "video": null,
+    "video": "https://pub-f544b863298a4f68b748bf974d81e13c.r2.dev/inventory-management.mp4",
     "poster": "/images/projects/nexusflow.png",
     "links": {
-      "github": "https://github.com/MobasirSarkar/Inventory-Management"
+      "github": "https://github.com/MobasirSarkar/Inventory-Management",
+      "live": "https://inventory-management-drab-kappa.vercel.app/"
     },
     "sfx": "WHAM!"
   },
@@ -20,11 +21,13 @@
     "name": "BeyondEvent",
     "tagline": "Event Simulation Platform",
     "description": [
-      "Designed an event-driven architecture simulation platform that lets developers model distributed systems, create service topologies, and visualize asynchronous event flows through an interactive graph-based editor.",
-      "Implemented topology management, event persistence, and real-time event streaming with Socket.IO, distributed tracing, and replay capabilities on a modular event bus architecture."
+      "Designed and built an event-driven architecture simulation platform where developers model distributed systems in an interactive graph editor, execute simulations over the topology, and watch events propagate live on the canvas with per-service worker lifecycle states.",
+      "Architected a transport-agnostic event bus (Redis Streams and in-memory adapters behind one interface) with idempotent event persistence, distributed tracing via trace/span/correlation/causation IDs, and deterministic replay that re-delivers recorded events without duplication.",
+      "Built a reactive worker runtime: a Worker SDK with retries, timeouts, and lifecycle heartbeats for external processes, plus a bus-driven executor that activates user-defined workers by event-type subscription — keeping workers fully decoupled from topology definitions.",
+      "Implemented chaos engineering (fault injection, latency, event duplication) with a timeline scrubber for post-run debugging, real-time Socket.IO streaming to a React 19 dashboard, and CI-run integration tests that boot the full Fastify API against real Postgres and Redis containers."
     ],
     "tech": ["React", "Node.js", "PostgreSQL", "Redis", "Socket.IO", "Docker"],
-    "video": null,
+    "video": "https://pub-f544b863298a4f68b748bf974d81e13c.r2.dev/beyond-events.mp4",
     "poster": "/images/projects/beyondevent.png",
     "links": {
       "github": "https://github.com/BeyondEvent/platform"
