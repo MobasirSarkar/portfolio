@@ -2,7 +2,15 @@ import { skills } from "@/lib/content";
 import { skillIconMap } from "@/lib/icon-map";
 
 // tech names that differ from their skills.json entry
-const skillAliases: Record<string, string> = { Golang: "Go" };
+const skillAliases: Record<string, string> = {
+  Golang: "Go",
+  "NATS JetStream": "NATS",
+  "MinIO S3": "MinIO",
+  "Tailwind CSS": "TailwindCSS",
+  "@tanstack/react-router": "TanStack Router",
+  "Tanstack Router": "TanStack Router",
+  "HTML/CSS/JS": "HTML5",
+};
 
 const skillByName = new Map(
   skills.flatMap((category) => category.skills.map((skill) => [skill.name, skill] as const)),

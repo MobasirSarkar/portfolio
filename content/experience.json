@@ -14,10 +14,10 @@
       "Docker"
     ],
     "highlights": [
-      "Reduced release turnaround time by 50% by designing standardized CI/CD pipelines using GitHub Actions for multi-environment deployments.",
-      "Led development of an HRMS platform serving 1,000+ users, delivering employee management, workforce scheduling, attendance tracking, and workflow automation.",
-      "Architected a Fleet Management Platform enabling device and vehicle model-based tracking, route planning, trip orchestration, and real-time operations.",
-      "Architected centralized authentication and authorization services across multiple enterprise applications with secure session management, RBAC, and organization-level access control."
+      "Designed and implemented an enterprise-grade roster management system with RFC 5545 (RRULE)-based recurring shift scheduling, a periodic scheduling engine, and an RFID-based attendance module, enabling flexible workforce scheduling and automated attendance tracking.",
+      "Developed a configurable enterprise HRMS platform with metadata-driven employee management, workforce scheduling, attendance tracking, and workflow automation, enabling organization-specific customization without code changes and supporting 1,000+ active users",
+      "Architected a configuration-driven Fleet Management Platform supporting dynamic route types, automated trip generation through roster and shift scheduling and intelligent tracking source selection between mobile applications and GPS devices based on configurable business rules.",
+      "Engineered a centralized Identity and Access Management (IAM) platform providing authentication, authorization, RBAC, secure session management, and tenant-aware access control across multiple enterprise applications."
     ],
     "sfx": "LEVEL UP!"
   },
@@ -28,6 +28,7 @@
     "location": "Noida, India",
     "stack": [
       "NestJS",
+      "Golang",
       "Python",
       "Flask",
       "Next.js",
@@ -37,9 +38,10 @@
       "Node.js"
     ],
     "highlights": [
-      "Achieved 92% validation accuracy by designing and deploying custom computer vision models for real-time user activity detection using IP camera streams.",
-      "Built a multi-tenant identity management platform with RBAC, secure user onboarding, and access management workflows across multiple organizations.",
-      "Engineered low-latency backend services with NestJS, PostgreSQL, and Redis, optimizing data access patterns for concurrent enterprise workloads."
+      "Researched, developed, and deployed custom computer vision models for real-time user activity detection using IP camera streams, achieving 80% validation accuracy through dataset preparation, model training, evaluation, and iterative optimization.",
+      "Designed backend services for a multi-tenant IAM platform handling organization onboarding, user lifecycle management, RBAC, and secure access control across multiple tenants.",
+      "Developed an asynchronous media processing pipeline that orchestrated image and video uploads, AI inference requests, result processing, and persistent storage, enabling scalable computer vision workflows across enterprise applications.",
+      "Developed RESTful backend services for an AI-powered Identity and Access Management platform, orchestrating image and video processing workflows, integrating computer vision inference services, and managing user enrollment and identity verification pipelines"
     ],
     "sfx": "ORIGIN!"
   }

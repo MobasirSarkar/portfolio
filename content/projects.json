@@ -1,5 +1,23 @@
 [
   {
+    "id": "mediaengine",
+    "name": "MediaEngine",
+    "tagline": "Enterprise Media Ingestion & Processing Pipeline",
+    "description": [
+      "Architected a high-performance media ingestion and transcoding pipeline featuring adaptive concurrent chunked uploads, session resumption, and automatic storage cleanup.",
+	    "Engineered a scalable, event-driven task distribution system using Go, NATS JetStream queues, PostgreSQL state machines, MinIO (S3 API), and concurrent FFmpeg processing workers.",
+      "Optimized client-side transfer speeds by 5–10x utilizing adaptive chunk sizing and a parallelized browser-upload pool running with controlled concurrency.",
+      "Developed type-safe SQL transaction controls via sqlc and SSE-based event streams to feed real-time task statuses directly into a premium client dashboard."
+    ],
+    "tech": ["Go", "NATS JetStream", "PostgreSQL", "MinIO S3", "Docker", "FFmpeg","HTML/CSS/JS"],
+    "video": "https://pub-f544b863298a4f68b748bf974d81e13c.r2.dev/media_pipeline.mp4",
+    "poster": "/images/projects/media_pipeline.png",
+    "links": {
+	  "github": "https://github.com/MobasirSarkar/MediaEngine"
+	  },
+    "sfx": "BOOM!"
+  },
+  {
     "id": "nexusflow",
     "name": "NexusFlow",
     "tagline": "Inventory & Order Management System",
@@ -33,5 +51,32 @@
       "github": "https://github.com/BeyondEvent/platform"
     },
     "sfx": "ドン!"
+  },
+  {
+    "id": "distributed-chat",
+    "name": "Distributed Chat Platform",
+    "tagline": "Multi-Server Real-Time Messaging System",
+    "description": [
+      "Designed and implemented a distributed real-time messaging platform using Go, WebSockets, and NATS Pub/Sub, enabling seamless communication across multiple stateless server instances.",
+      "Engineered an event-driven messaging architecture with NATS as the message bus, decoupling WebSocket servers and enabling horizontal scalability without direct server-to-server communication.",
+      "Built a resilient connection management layer supporting automatic client reconnection, graceful server shutdown, and reliable message delivery across distributed nodes.",
+      "Developed a React + TypeScript frontend featuring reusable WebSocket hooks, persistent client-side message history, and real-time UI synchronization for a responsive chat experience."
+    ],
+    "tech": [
+      "Go",
+      "WebSockets",
+      "NATS",
+      "React",
+      "TypeScript",
+      "Tanstack Router",
+      "Tailwind CSS",
+      "Docker"
+    ],
+    "video": "https://pub-f544b863298a4f68b748bf974d81e13c.r2.dev/chat_server.mp4",
+    "poster": "/images/projects/chat_server.png",
+    "links": {
+      "github": "https://github.com/MobasirSarkar/distributed-chat"
+    },
+    "sfx": "CONNECT!"
   }
 ]

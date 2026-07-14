@@ -18,7 +18,8 @@
       { "name": "HTML5", "icon": "SiHtml5", "color": "#E34F26" },
       { "name": "CSS3", "icon": "SiCss", "color": "#663399" },
       { "name": "SASS", "icon": "SiSass", "color": "#CC6699" },
-      { "name": "TailwindCSS", "icon": "SiTailwindcss", "color": "#06B6D4" }
+      { "name": "TailwindCSS", "icon": "SiTailwindcss", "color": "#06B6D4" },
+      { "name": "TanStack Router", "icon": "SiTanstack", "color": "#FF4154" }
     ]
   },
   {
@@ -31,7 +32,12 @@
       { "name": "GraphQL", "icon": "SiGraphql", "color": "#E10098" },
       { "name": "Socket.IO", "icon": "SiSocketdotio", "color": "#0A0A0A" },
       { "name": "PostgreSQL", "icon": "SiPostgresql", "color": "#4169E1" },
-      { "name": "Redis", "icon": "SiRedis", "color": "#FF4438" }
+      { "name": "Redis", "icon": "SiRedis", "color": "#FF4438" },
+      { "name": "NATS", "icon": "SiNats", "color": "#27AAE1" },
+      { "name": "Valkey", "icon": "SiValkey", "color": "#123678" },
+      { "name": "MinIO", "icon": "SiMinio", "color": "#EC1C24" },
+      { "name": "FFmpeg", "icon": "SiFfmpeg", "color": "#007808" },
+      { "name": "WebSockets", "icon": "SiWebsockets", "color": "#0090FF" }
     ]
   },
   {
