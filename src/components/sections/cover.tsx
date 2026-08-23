@@ -37,49 +37,82 @@ export function Cover() {
       const mm = gsap.matchMedia();
 
       mm.add("(prefers-reduced-motion: reduce)", () => {
-        gsap.from("[data-cover-item]", {
-          opacity: 0,
-          duration: 0.6,
-          stagger: 0.1,
-        });
+        gsap.fromTo(
+          "[data-cover-item]",
+          { opacity: 0 },
+          {
+            opacity: 1,
+            duration: 0.6,
+            stagger: 0.1,
+          },
+        );
+        gsap.fromTo(
+          ".cover-lines",
+          { opacity: 0 },
+          { opacity: 0.3, duration: 0.6 },
+        );
+        gsap.fromTo(
+          ".cover-sfx",
+          { opacity: 0 },
+          { opacity: 1, duration: 0.6 },
+        );
       });
 
       mm.add("(prefers-reduced-motion: no-preference)", () => {
         const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-        tl.from(".cover-lines", { opacity: 0, scale: 1.25, duration: 0.9 })
-          .from(
+        tl.fromTo(
+          ".cover-lines",
+          { opacity: 0, scale: 1.25 },
+          { opacity: 0.3, scale: 1, duration: 0.9 },
+        )
+          .fromTo(
             ".hero-letter",
             {
               opacity: 0,
               scale: 2.6,
               rotate: 8,
+            },
+            {
+              opacity: 1,
+              scale: 1,
+              rotate: 0,
               duration: 0.55,
               stagger: 0.07,
               ease: "back.out(2)",
             },
             "-=0.4",
           )
-          .from(
+          .fromTo(
             ".cover-banner",
-            { xPercent: -120, opacity: 0, duration: 0.5 },
+            { xPercent: -120, opacity: 0 },
+            { xPercent: 0, opacity: 1, duration: 0.5 },
             "-=0.2",
           )
-          .from(
+          .fromTo(
             ".cover-bubble",
             {
               scale: 0,
               opacity: 0,
+            },
+            {
+              scale: 1,
+              opacity: 1,
               duration: 0.6,
               ease: "elastic.out(1, 0.5)",
             },
             "-=0.1",
           )
-          .from(
+          .fromTo(
             ".cover-sfx",
-            { opacity: 0, scale: 0, stagger: 0.08, ease: "back.out(3)" },
+            { opacity: 0, scale: 0 },
+            { opacity: 1, scale: 1, stagger: 0.08, ease: "back.out(3)" },
             "<",
           )
-          .from(".cover-cue", { opacity: 0, y: -10 });
+          .fromTo(
+            ".cover-cue",
+            { opacity: 0 },
+            { opacity: 1, duration: 0.5 },
+          );
       });
     },
     { scope: ref },
@@ -100,21 +133,21 @@ export function Cover() {
         className="halftone-lg absolute right-0 bottom-0 h-48 w-48 mask-[linear-gradient(-45deg,black,transparent_70%)]"
       />
 
-      <div className="cover-lines absolute inset-0 opacity-30">
+      <div className="cover-lines absolute inset-0 opacity-0">
         <SpeedLines />
       </div>
 
-      <SfxText className="cover-sfx absolute top-24 left-[8%] hidden -rotate-12 text-4xl text-electric md:block">
+      <SfxText className="cover-sfx absolute top-24 left-[8%] hidden -rotate-12 text-4xl text-electric opacity-0 md:block">
         ドン!
       </SfxText>
-      <SfxText className="cover-sfx absolute right-[10%] bottom-32 hidden rotate-6 text-4xl text-stroke-ink text-paper md:block">
+      <SfxText className="cover-sfx absolute right-[10%] bottom-32 hidden rotate-6 text-4xl text-stroke-ink text-paper opacity-0 md:block">
         BOOM!
       </SfxText>
 
       <div className="relative z-10 flex flex-col items-center text-center">
         <div
           data-cover-item
-          className="cover-banner mb-4 -skew-x-6 border-2 border-ink bg-electric px-4 py-1"
+          className="cover-banner mb-4 -skew-x-6 border-2 border-ink bg-electric px-4 py-1 opacity-0"
         >
           <p className="skew-x-6 font-bold text-xs tracking-[0.35em] text-ink sm:text-sm">
             A DEVELOPER STORY — VOL. 1
@@ -127,7 +160,7 @@ export function Cover() {
           aria-label={profile.name}
         >
           {profile.heroName.split("").map((ch, i) => (
-            <span key={i} aria-hidden className="hero-letter inline-block">
+            <span key={i} aria-hidden className="hero-letter inline-block opacity-0">
               {ch}
             </span>
           ))}
@@ -135,21 +168,21 @@ export function Cover() {
 
         <div
           data-cover-item
-          className="cover-banner mt-2 border-4 border-ink bg-ink px-6 py-2 panel-shadow-electric"
+          className="cover-banner mt-2 border-4 border-ink bg-ink px-6 py-2 opacity-0 panel-shadow-electric"
         >
           <p className="font-display text-xl tracking-[0.25em] text-paper sm:text-2xl">
             {profile.title.toUpperCase()}
           </p>
         </div>
 
-        <div data-cover-item className="cover-bubble mt-8 max-w-md">
+        <div data-cover-item className="cover-bubble mt-8 max-w-md opacity-0">
           <SpeechBubble tail="left">
             <p className="font-bold text-base sm:text-lg">{profile.tagline}</p>
           </SpeechBubble>
         </div>
 
         {/* main weapons — quick-glance tech */}
-        <div data-cover-item className="cover-bubble mt-7 flex items-center gap-2">
+        <div data-cover-item className="cover-bubble mt-7 flex items-center gap-2 opacity-0">
           <span className="hidden font-display text-xs tracking-[0.25em] text-ink/60 sm:block">
             MAIN WEAPONS
           </span>
@@ -173,7 +206,7 @@ export function Cover() {
         </div>
 
         {/* CTAs */}
-        <div data-cover-item className="cover-bubble mt-7 flex items-center gap-3">
+        <div data-cover-item className="cover-bubble mt-7 flex items-center gap-3 opacity-0">
           <motion.a
             href={profile.resume}
             download
@@ -207,7 +240,7 @@ export function Cover() {
         {/* status strip */}
         <div
           data-cover-item
-          className="cover-banner mt-7 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 font-mono text-[11px] font-bold tracking-wider sm:text-xs"
+          className="cover-banner mt-7 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 font-mono text-[11px] font-bold tracking-wider opacity-0 sm:text-xs"
         >
           <span className="flex items-center gap-1.5">
             <Zap className="size-3.5 text-electric" />
@@ -236,7 +269,7 @@ export function Cover() {
           startTurn("/#about");
         }}
         data-cover-item
-        className="cover-cue absolute bottom-6 flex flex-col items-center gap-1 font-display text-sm tracking-[0.3em]"
+        className="cover-cue absolute bottom-6 flex flex-col items-center gap-1 font-display text-sm tracking-[0.3em] opacity-0"
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
       >
