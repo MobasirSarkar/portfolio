@@ -11,13 +11,15 @@
       "Angular",
       "PostgreSQL",
       "Redis",
-      "Docker"
+      "Docker",
+      "Kafka"
     ],
     "highlights": [
-      "Designed and implemented an enterprise-grade roster management system with RFC 5545 (RRULE)-based recurring shift scheduling, a periodic scheduling engine, and an RFID-based attendance module, enabling flexible workforce scheduling and automated attendance tracking.",
-      "Developed a configurable enterprise HRMS platform with metadata-driven employee management, workforce scheduling, attendance tracking, and workflow automation, enabling organization-specific customization without code changes and supporting 1,000+ active users",
-      "Architected a configuration-driven Fleet Management Platform supporting dynamic route types, automated trip generation through roster and shift scheduling and intelligent tracking source selection between mobile applications and GPS devices based on configurable business rules.",
-      "Engineered a centralized Identity and Access Management (IAM) platform providing authentication, authorization, RBAC, secure session management, and tenant-aware access control across multiple enterprise applications."
+      "Designed and implemented an enterprise-grade roster management system supporting 2,000+ users and processing 80K+ daily attendance events, including IN/OUT and dynamic break tracking, with RFC 5545 (RRULE)-based recurring shift scheduling and a periodic scheduling engine.",
+      "Architected and developed a metadata-driven, multi-tenant HRMS platform powering 200+ white-label organizations, with configurable employee management, workforce scheduling, attendance, and workflow automation, enabling tenant-specific business rules and customization without code changes.",
+      "Architected a configuration-driven Fleet Management Platform supporting 100K+ active GPS devices streaming real-time telemetry, with dynamic route types, automated trip generation through roster and shift scheduling, and configurable business rules for selecting mobile or GPS tracking sources.",
+      "Engineered a centralized, tenant-aware IAM platform powering authentication and authorization across 200+ enterprise tenants and 20+ applications, with RBAC, secure session management, and centralized access policies.",
+      "Rebuilt a reverse geocoding microservice in Go, loading and serving 6M+ geospatial records with 20μs average lookup latency using in-memory maps and concurrent Goroutines."
     ],
     "sfx": "LEVEL UP!"
   },
@@ -27,21 +29,23 @@
     "period": "May 2023 — January 2026",
     "location": "Noida, India",
     "stack": [
-      "NestJS",
+      "Node.js",
+      "React",
       "Golang",
       "Python",
-      "Flask",
+      "FastAPI",
       "Next.js",
       "PostgreSQL",
       "PM2",
       "Docker",
-      "Node.js"
+      "RabbitMQ"
     ],
     "highlights": [
-      "Researched, developed, and deployed custom computer vision models for real-time user activity detection using IP camera streams, achieving 80% validation accuracy through dataset preparation, model training, evaluation, and iterative optimization.",
-      "Designed backend services for a multi-tenant IAM platform handling organization onboarding, user lifecycle management, RBAC, and secure access control across multiple tenants.",
-      "Developed an asynchronous media processing pipeline that orchestrated image and video uploads, AI inference requests, result processing, and persistent storage, enabling scalable computer vision workflows across enterprise applications.",
-      "Developed RESTful backend services for an AI-powered Identity and Access Management platform, orchestrating image and video processing workflows, integrating computer vision inference services, and managing user enrollment and identity verification pipelines"
+      "Introduced and developed an embedding-based face recognition approach for real-time user identification from IP camera streams, training the initial model from scratch and achieving 80% validation accuracy through custom dataset preparation, model evaluation, and iterative optimization.",
+      "Engineered a full-stack real-time crowd management platform using FastAPI, PostgreSQL, React.js, processing 1,200+ people per second at 85% counting accuracy in live environments and delivering real-time crowd analytics, dashboards, and configurable reporting.",
+      "Architected and developed a multi-tenant IAM backend services platform using Node.js and Fastify, providing reusable identity services for 5 core enterprise applications with tenant-aware authentication, authorization, RBAC, user lifecycle management, and secure tenant isolation.",
+      "Developed an asynchronous media processing pipeline using Go and RabbitMQ, processing 10K+ image and video jobs daily and orchestrating uploads, AI inference requests, result processing, and persistent storage for scalable computer vision workflows across enterprise applications.",
+      "Developed scalable RESTful backend services in NestJS for an AI-powered Identity and Access Management platform, orchestrating asynchronous image and video processing, integrating computer vision inference services, and managing end-to-end user enrollment and identity verification workflows."
     ],
     "sfx": "ORIGIN!"
   }

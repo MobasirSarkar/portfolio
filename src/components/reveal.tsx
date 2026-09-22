@@ -5,11 +5,13 @@ import { useRef } from "react";
 import { useBook } from "@/components/manga-book";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { cn } from "@/lib/utils";
+import { Position } from "@/types/positions";
+import { getSlideVars } from "@/animations/slide";
 
 type RevealProps = {
   children: React.ReactNode;
   className?: string;
-  from?: "left" | "right" | "bottom" | "wipe";
+  from?: Position;
   delay?: number;
 };
 
@@ -21,7 +23,7 @@ type RevealProps = {
 export function Reveal({
   children,
   className,
-  from = "bottom",
+  from = Position.Bottom,
   delay = 0,
 }: RevealProps) {
   const ref = useRef<HTMLDivElement>(null);
@@ -38,15 +40,6 @@ export function Reveal({
         delay,
         ease: "power3.inOut",
       } as const;
-      const slideVars = {
-        opacity: 0,
-        x: from === "left" ? -70 : from === "right" ? 70 : 0,
-        y: from === "bottom" ? 70 : 0,
-        rotate: from === "left" ? -2 : from === "right" ? 2 : 0,
-        duration: 0.85,
-        delay,
-        ease: "power3.out",
-      } as const;
 
       if (book) {
         const scrollTrigger = {
@@ -54,7 +47,8 @@ export function Reveal({
           containerAnimation: book,
           start: "left 85%",
         };
-        if (from === "wipe") {
+
+        if (from === Position.Wipe) {
           gsap.fromTo(
             el,
             { clipPath: "inset(0 100% 0 0)", opacity: 1 },
@@ -62,7 +56,12 @@ export function Reveal({
           );
           return;
         }
-        gsap.from(el, { ...slideVars, scrollTrigger });
+
+        gsap.from(el, {
+          ...getSlideVars(from, delay),
+          scrollTrigger,
+        });
+
         return;
       }
 
@@ -73,13 +72,20 @@ export function Reveal({
           opacity: 0,
           duration: 0.5,
           delay,
-          scrollTrigger: { trigger: el, start: "top 88%" },
+          scrollTrigger: {
+            trigger: el,
+            start: "top 88%",
+          },
         });
       });
 
       mm.add("(prefers-reduced-motion: no-preference)", () => {
-        const scrollTrigger = { trigger: el, start: "top 85%" };
-        if (from === "wipe") {
+        const scrollTrigger = {
+          trigger: el,
+          start: "top 85%",
+        };
+
+        if (from === Position.Wipe) {
           gsap.fromTo(
             el,
             { clipPath: "inset(0 100% 0 0)", opacity: 1 },
@@ -87,10 +93,18 @@ export function Reveal({
           );
           return;
         }
-        gsap.from(el, { ...slideVars, scrollTrigger });
+
+        gsap.from(el, {
+          ...getSlideVars(from, delay),
+          scrollTrigger,
+        });
       });
     },
-    { scope: ref, dependencies: [book], revertOnUpdate: true },
+    {
+      scope: ref,
+      dependencies: [book],
+      revertOnUpdate: true,
+    },
   );
 
   return (

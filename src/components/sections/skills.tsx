@@ -79,7 +79,7 @@ export function Skills() {
                     <motion.div
                       key={skill.name}
                       title={skill.name}
-                      className="skill-sticker group relative flex size-14 items-center justify-center border-2 border-ink bg-paper panel-shadow-sm sm:size-16 md:size-12"
+                      className="skill-sticker group relative z-0 flex size-14 items-center justify-center border-2 border-ink bg-paper panel-shadow-sm hover:z-30 focus-within:z-30 sm:size-16 md:size-12"
                       whileHover={{ scale: 1.15, rotate: -5, y: -4 }}
                       transition={{ type: "spring", stiffness: 400, damping: 15 }}
                     >
